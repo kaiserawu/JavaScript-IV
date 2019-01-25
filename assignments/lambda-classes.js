@@ -25,6 +25,20 @@ class Instructor extends Person {
     grade(student, subject) {
         console.log(`${student.name} receives a perfect score on ${subject}`);
     }
+    changeGrade(student) {
+        let addOrSub = Math.floor(Math.random() * 2);
+        if (addOrSub) {
+            let limit = 100 - student.grade;
+            let change = Math.ceil(Math.random() * limit);
+            student.grade += change;
+            console.log(`${this.name} has upped ${student.name}'s grades by ${change} points`);
+        } else {
+            let limit = student.grade;
+            let change = Math.ceil(Math.random() * limit);
+            student.grade -= change;
+            console.log(`${this.name} has lowered ${student.name}'s grades by ${change} points`);
+        }
+    }
 }
 
 class Student extends Person {
@@ -33,6 +47,7 @@ class Student extends Person {
         this.previousBackground = props.previousBackground;
         this.className = props.className;
         this.favSubjects = props.favSubjects;
+        this.grade = props.grade;
     }
     listsSubjects() {
         this.favSubjects.forEach(function(x) {
@@ -44,6 +59,13 @@ class Student extends Person {
     }
     sprintChallenge(subject) {
         console.log(`${this.name} has begun sprint challenge on ${subject}`);
+    }
+    graduate() {
+        if (this.grade > 70) {
+            console.log(`Congrats, ${this.name}! You have graduated!`);
+        } else {
+            console.log(`Better hit the books some more, ${this.name}. You ain't got high enough grades to graduate.`)
+        }
     }
 }
 
@@ -68,7 +90,8 @@ const bob = new Student({
     gender: 'male',
     previousBackground: 'Pizza Delivery Boy',
     className: 'FS185',
-    favSubjects: ['C++++', 'Javascript', 'HTML']
+    favSubjects: ['C++++', 'Javascript', 'HTML'],
+    grade: 78
 })
 
 const fred = new Instructor({
@@ -102,3 +125,9 @@ fred.grade(bob, 'CSS');
 
 james.standUp('webpt36_james');
 james.debugsCode(bob, 'Ice Cream');
+
+bob.graduate();
+james.changeGrade(bob);
+james.changeGrade(bob);
+james.changeGrade(bob);
+bob.graduate();
