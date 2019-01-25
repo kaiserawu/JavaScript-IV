@@ -60,3 +60,45 @@ class ProjectManager extends Instructor {
         console.log(`${this.name} debugs ${student.name}'s code on ${subject}`);
     }
 }
+
+const bob = new Student({
+    name: 'Bob',
+    location: 'Atlantis',
+    age: 236,
+    gender: 'male',
+    previousBackground: 'Pizza Delivery Boy',
+    className: 'FS185',
+    favSubjects: ['C++++', 'Javascript', 'HTML']
+})
+
+const fred = new Instructor({
+    name: 'Fred',
+    location: 'Bedrock',
+    age: 37,
+    gender: 'male',
+    favLanguage: 'JavaScript',
+    specialty: 'Front-end',
+    catchPhrase: `Don't forget the homies`
+});
+
+const james = new ProjectManager({
+    name: 'James',
+    location: 'San Francisco',
+    age: 12,
+    gender: 'male',
+    favLanguage: 'English',
+    specialty: 'Ice Cream',
+    catchPhrase: 'Wait what, I\'m a coding instructor now?',
+    gradClassName: 'N/A',
+    favInstructor: 'life'
+})
+
+bob.listsSubjects();
+bob.PRAssignment('Advanced AI Creation');
+
+fred.speak();
+fred.demo('Javascript');
+fred.grade(bob, 'CSS');
+
+james.standUp('webpt36_james');
+james.debugsCode(bob, 'Ice Cream');
